@@ -1,0 +1,28 @@
+<svg width="800" height="600" viewbox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+    <mask id="blob">
+        <!-- This is the left "red" box, that creates the base shape you want to see -->
+        <rect id="box1" x="25%" y="33%" width="20%" height="33%" fill="white" />
+
+        <!-- This is the right "white/black" box that cuts out of the left box -->
+        <rect id="box2" x="33%" y="25%" width="33%" height="20%" fill="black" />
+    </mask>
+
+    <!--
+        The mask is applied to this rectangle which creates the intersected box
+        shape. The fill color of this rect is the color of the final shape.
+    -->
+    <rect x="0" y="0" width="100%" height="100%" fill="green" mask="url(#blob)" />
+
+    <style>
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        rect {
+            transform-origin: center;
+            transform-box: fill-box;
+        }
+        #box1 { animation: spin 8s linear infinite; }
+        #box2 { animation: spin 22s linear infinite; }
+    </style>
+</svg>
